@@ -6,5 +6,7 @@
     public class MenuNameConst
     {
         public const string PlayerOptions = "ScriptableObjects/Game/" + nameof(PlayerOptions);
+
+        public const string GameOptions = "ScriptableObjects/Game/" + nameof(GameOptions);
     }
 }
