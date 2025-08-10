@@ -20,6 +20,9 @@ namespace BarrelHide.Game.Configuration.Installers
         {
             // Options
             Container.BindInstance(_options.PlayerOptions);
+            Container.BindInstance(_options.CameraOptions);
+
+            _player.Install(Container);
 
             Container
                 .Bind<IPlayerFacade>()

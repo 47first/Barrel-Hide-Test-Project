@@ -1,4 +1,6 @@
 ﻿using BarrelHide.Game.Players.Components;
+using BarrelHide.Game.Players.Facade;
+using BarrelHide.Game.Players.Facade.Impl;
 using BarrelHide.Game.Players.Input.Impl;
 using BarrelHide.Game.Views;
 using UnityEngine;
@@ -10,6 +12,8 @@ namespace BarrelHide.Game.Players.Configuration.Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<IPlayerFacade>().To<PlayerFacade>().AsSingle();
+
             Container
                 .BindInterfacesTo<DevicePlayerInput>()
                 .AsSingle();
@@ -21,7 +25,7 @@ namespace BarrelHide.Game.Players.Configuration.Installers
                 .NonLazy();
 
             Container
-                .Bind<PlayerMovementController>()
+                .Bind<PlayerTransformController>()
                 .FromNewComponentOnRoot()
                 .AsSingle()
                 .NonLazy();

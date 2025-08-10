@@ -1,14 +1,17 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using BarrelHide.Game.Players.Components;
+using UnityEngine;
 
 namespace BarrelHide.Game.Players.Facade.Impl
 {
     public class PlayerFacade : IPlayerFacade
     {
-        public Vector3 Position { get; }
+        private readonly PlayerTransformController _transformController;
 
-        public class Factory : PlaceholderFactory<PlayerFacade>
+        public PlayerFacade(PlayerTransformController transformController)
         {
+            _transformController = transformController;
         }
+
+        public Vector3 Position => _transformController.transform.position;
     }
 }

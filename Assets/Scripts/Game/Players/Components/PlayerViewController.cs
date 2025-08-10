@@ -16,9 +16,10 @@ namespace BarrelHide.Game.Players.Components
         private void FixedUpdate()
         {
             var fixedDeltaPosition = transform.position - _previousFixedPosition;
+
             _previousFixedPosition = transform.position;
 
-            if (fixedDeltaPosition.magnitude > _options.RotationDeltaPositionMagnitudeError)
+            if (fixedDeltaPosition != Vector3.zero)
             {
                 _targetRotation = Quaternion.LookRotation(fixedDeltaPosition);
             }

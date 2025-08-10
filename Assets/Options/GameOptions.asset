@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameOptions
   m_EditorClassIdentifier: 
   <PlayerOptions>k__BackingField: {fileID: 11400000, guid: 7aefc89c86de11c4d963e5b8b6d3c04b, type: 2}
+  <CameraOptions>k__BackingField: {fileID: 11400000, guid: b4d2651b32ed9a949bd3e79d90d225ae, type: 2}

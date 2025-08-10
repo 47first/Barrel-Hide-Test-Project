@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45b82f55c88247c7b137c486042dbb3c, type: 3}
-  m_Name: PlayerOptions
+  m_Script: {fileID: 11500000, guid: f69991e6840545b786f1370060f8df9c, type: 3}
+  m_Name: CameraOptions
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 3
-  <MovementMagnitudeError>k__BackingField: 0.1
-  <RotationLerpSpeed>k__BackingField: 0.3
-  <RotationDeltaPositionMagnitudeError>k__BackingField: 0
+  <PositionOffset>k__BackingField: {x: 0.5, y: 2.5, z: -5}

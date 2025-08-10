@@ -8,5 +8,7 @@
         public const string PlayerOptions = "ScriptableObjects/Game/" + nameof(PlayerOptions);
 
         public const string GameOptions = "ScriptableObjects/Game/" + nameof(GameOptions);
+
+        public const string CameraOptions = "ScriptableObjects/Game/" + nameof(CameraOptions);
     }
 }

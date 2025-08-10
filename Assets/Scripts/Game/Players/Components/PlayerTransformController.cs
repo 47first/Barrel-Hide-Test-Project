@@ -5,7 +5,7 @@ using Zenject;
 
 namespace BarrelHide.Game.Players.Components
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class PlayerTransformController : MonoBehaviour
     {
         [Inject] private CharacterController _characterController;
         [Inject] private PlayerOptions _options;
