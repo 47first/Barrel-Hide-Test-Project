@@ -7,20 +7,9 @@ namespace BarrelHide.Game.Players.Components
 {
     public class PlayerMovementController : MonoBehaviour
     {
-        private CharacterController _characterController;
-        private PlayerOptions _options;
-        private IPlayerInput _input;
-
-        [Inject]
-        public void InjectBindings(
-            CharacterController characterController,
-            PlayerOptions options,
-            IPlayerInput input)
-        {
-            _characterController = characterController;
-            _options = options;
-            _input = input;
-        }
+        [Inject] private CharacterController _characterController;
+        [Inject] private PlayerOptions _options;
+        [Inject] private IPlayerInput _input;
 
         private void FixedUpdate()
         {
@@ -29,8 +18,8 @@ namespace BarrelHide.Game.Players.Components
                 return;
             }
 
-            var moveSpeed = new Vector3(_input.MoveDirection.x, 0, _input.MoveDirection.y);
-            _characterController.SimpleMove(moveSpeed);
+            var moveDirection = new Vector3(_input.MoveDirection.x, 0, _input.MoveDirection.y).normalized;
+            _characterController.SimpleMove(moveDirection * _options.MoveSpeed);
         }
     }
 }

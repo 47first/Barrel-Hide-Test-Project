@@ -8,9 +8,14 @@ namespace BarrelHide.Game.Players.Configuration.Options
         menuName = MenuNameConst.PlayerOptions)]
     public class PlayerOptions : ScriptableObject
     {
-        [Header(HeaderConst.Movement)]
+        [field: Header(HeaderConst.Movement)]
         [field: SerializeField] public float MoveSpeed { get; private set; }
 
         [field: SerializeField] public float MovementMagnitudeError { get; private set; }
+
+        [field: Header(HeaderConst.View)]
+        [field: SerializeField] public float RotationLerpSpeed { get; private set; }
+
+        [field: SerializeField] public float RotationDeltaPositionMagnitudeError { get; private set; }
     }
 }
