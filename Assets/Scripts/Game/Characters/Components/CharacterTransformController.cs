@@ -22,11 +22,6 @@ namespace BarrelHide.Game.Characters.Components
             FixedDeltaPosition = transform.position - _previousFixedPosition;
             _previousFixedPosition = transform.position;
 
-            if (_input.MoveDirection.magnitude < _options.MovementMagnitudeError)
-            {
-                return;
-            }
-
             var moveDirection = new Vector3(_input.MoveDirection.x, 0, _input.MoveDirection.y).normalized;
             _characterController.SimpleMove(moveDirection * _options.MoveSpeed);
         }

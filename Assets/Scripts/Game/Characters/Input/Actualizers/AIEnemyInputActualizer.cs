@@ -1,6 +1,7 @@
 ﻿using BarrelHide.Game.Characters.Components;
 using BarrelHide.Game.Characters.Components.Enemy;
 using BarrelHide.Game.Characters.Input.Models;
+using UnityEngine;
 using Zenject;
 
 namespace BarrelHide.Game.Characters.Input.Actualizers
@@ -23,7 +24,15 @@ namespace BarrelHide.Game.Characters.Input.Actualizers
 
         public void FixedTick()
         {
-            _input.MoveDirection = (_transformController.Position - _aiController.WayPoint.Position).normalized;
+            var convertedWayPointPosition = new Vector2(
+                _aiController.TargetWayPoint.Position.x,
+                _aiController.TargetWayPoint.Position.z);
+
+            var convertedCharacterPosition = new Vector2(
+                _transformController.Position.x,
+                _transformController.Position.z);
+
+            _input.MoveDirection = (convertedWayPointPosition - convertedCharacterPosition).normalized;
         }
     }
 }

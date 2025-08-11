@@ -43,12 +43,17 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
                 .NonLazy();
             Container
                 .Bind<CharacterTransformController>()
-                .FromNewComponentOnRoot()
+                .FromComponentOnRoot()
+                .AsSingle()
+                .NonLazy();
+            Container
+                .Bind<PlayerVisibilityController>()
+                .FromComponentOnRoot()
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<PlayerViewController>()
-                .FromNewComponentOnRoot()
+                .FromComponentOnRoot()
                 .AsSingle()
                 .NonLazy();
         }

@@ -11,6 +11,8 @@ namespace BarrelHide.Game.Characters.Configuration.Options
         [field: Header(HeaderConst.Options)]
         [field: SerializeField] public float DetectionRange { get; private set; }
 
+        [field: SerializeField] public float ChangeWayPointRange { get; private set; }
+
         [field: Header(HeaderConst.Movement)]
         [field: SerializeField] public float MoveSpeed { get; private set; }
 

@@ -15,20 +15,43 @@ namespace BarrelHide.Game.Characters.Components.Enemy
         [Inject] private CharacterTransformController _transformController;
 
         [Header(HeaderConst.References)]
-        [field: SerializeField] public WayPoint WayPoint { get; set; }
+        [field: SerializeField] public WayPoint TargetWayPoint { get; set; }
 
         public EnemyAIState State { get; set; }
 
         private void FixedUpdate()
         {
+            DefineTargetWayPoint();
+
+            CheckCanSeePlayer();
+        }
+
+        private void DefineTargetWayPoint()
+        {
+            var relativePositionToWayPoint = _transformController.Position - TargetWayPoint.Position;
+
+            Debug.Log(relativePositionToWayPoint.magnitude);
+
+            if (relativePositionToWayPoint.magnitude < _options.ChangeWayPointRange)
+            {
+                Debug.Log("Change target player point");
+
+                var linkIndex = Random.Range(0, TargetWayPoint.Links.Length);
+
+                TargetWayPoint = TargetWayPoint.Links[linkIndex];
+            }
+        }
+
+        private void CheckCanSeePlayer()
+        {
             var relativePosition = _player.Position - _transformController.Position;
 
             if (_player.IsVisible &&
-                relativePosition.magnitude > _options.DetectionRange &&
-                Physics.Raycast(_transformController.Position, relativePosition, out var result, _options.DetectionRange) &&
-                result.collider == _transformController.GetComponent<Collider>())
+                relativePosition.magnitude < _options.DetectionRange &&
+                Physics.Raycast(_transformController.Position + Vector3.up, relativePosition, out var result, _options.DetectionRange) &&
+                result.collider.gameObject == _player.ColliderObject)
             {
-                Debug.Log("Detected");
+                Debug.Log($"Detected {result.collider.gameObject.name}");
             }
         }
     }
