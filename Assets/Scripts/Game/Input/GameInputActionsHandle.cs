@@ -6,7 +6,7 @@ namespace BarrelHide.Game.Input
 {
     public class GameInputActionsHandle : IInitializable, IDisposable
     {
-        private GameInputActions _gameInputActions;
+        private readonly GameInputActions _gameInputActions;
 
         public GameInputActionsHandle(GameInputActions gameInputActions)
         {

@@ -15,7 +15,7 @@ namespace BarrelHide.Game.Characters.Components.Enemy
         [Inject] private CharacterTransformController _transformController;
 
         [Header(HeaderConst.References)]
-        [field: SerializeField] public EnemyWayPoint WayPoint { get; set; }
+        [field: SerializeField] public WayPoint WayPoint { get; set; }
 
         public EnemyAIState State { get; set; }
 

@@ -13,22 +13,19 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
     public class PlayerInstaller : MonoInstaller
     {
         [SerializeField] private PlayerOptions _options;
+        [SerializeField] private PlayerView _view;
 
         public override void InstallBindings()
         {
-            Container
-                .BindInterfacesAndSelfTo<PlayerOptions>()
-                .FromInstance(_options);
-
             Container
                 .BindInterfacesTo<PlayerFacade>()
                 .AsSingle();
 
             Container
-                .Bind<PlayerView>()
-                .FromComponentInChildren()
-                .AsSingle()
-                .NonLazy();
+                .BindInterfacesAndSelfTo<PlayerOptions>()
+                .FromInstance(_options);
+
+            Container.BindInstance(_view);
 
             // Input
             Container
