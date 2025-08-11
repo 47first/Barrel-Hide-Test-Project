@@ -9,19 +9,15 @@ namespace BarrelHide.Game.Players.Components
     {
         [Inject] private PlayerView _view;
         [Inject] private PlayerOptions _options;
+        [Inject] private PlayerTransformController _transformController;
 
-        private Vector3 _previousFixedPosition;
         private Quaternion _targetRotation;
 
         private void FixedUpdate()
         {
-            var fixedDeltaPosition = transform.position - _previousFixedPosition;
-
-            _previousFixedPosition = transform.position;
-
-            if (fixedDeltaPosition != Vector3.zero)
+            if (_transformController.FixedDeltaPosition != Vector3.zero)
             {
-                _targetRotation = Quaternion.LookRotation(fixedDeltaPosition);
+                _targetRotation = Quaternion.LookRotation(_transformController.FixedDeltaPosition);
             }
 
             var currentRotation = Quaternion.Lerp(

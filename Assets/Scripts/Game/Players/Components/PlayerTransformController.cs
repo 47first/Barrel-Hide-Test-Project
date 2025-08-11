@@ -11,8 +11,17 @@ namespace BarrelHide.Game.Players.Components
         [Inject] private PlayerOptions _options;
         [Inject] private IPlayerInput _input;
 
+        private Vector3 _previousFixedPosition;
+
+        public Vector3 Position => transform.position;
+
+        public Vector3 FixedDeltaPosition { get; private set; }
+
         private void FixedUpdate()
         {
+            FixedDeltaPosition = transform.position - _previousFixedPosition;
+            _previousFixedPosition = transform.position;
+
             if (_input.MoveDirection.magnitude < _options.MovementMagnitudeError)
             {
                 return;
