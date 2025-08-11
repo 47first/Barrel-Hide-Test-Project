@@ -34,7 +34,7 @@ namespace BarrelHide.Generated.InputActions
                     ""type"": ""Value"",
                     ""id"": ""6a08d41c-746b-4b60-95fe-85f631b85be6"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2,StickDeadzone"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -94,6 +94,17 @@ namespace BarrelHide.Generated.InputActions
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1424cc1-4dc6-4541-8126-f79f52c70238"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
