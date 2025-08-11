@@ -1,6 +1,6 @@
 ﻿using BarrelHide.Game.Camera.Options;
+using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Consts;
-using BarrelHide.Game.Players.Facade;
 using UnityEngine;
 using Zenject;
 

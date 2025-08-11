@@ -1,7 +1,7 @@
+using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Configuration.Options;
 using BarrelHide.Game.Consts;
 using BarrelHide.Game.Input;
-using BarrelHide.Game.Players.Facade;
 using BarrelHide.Generated.InputActions;
 using UnityEngine;
 using Zenject;

@@ -536,8 +536,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593913851}
-  - component: {fileID: 593913852}
   - component: {fileID: 593913854}
+  - component: {fileID: 593913852}
   - component: {fileID: 593913853}
   m_Layer: 0
   m_Name: Player
@@ -574,6 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e31705b5a7447b9af469f5d1ecc01cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _options: {fileID: 11400000, guid: 7aefc89c86de11c4d963e5b8b6d3c04b, type: 2}
 --- !u!143 &593913853
 CharacterController:
   m_ObjectHideFlags: 0

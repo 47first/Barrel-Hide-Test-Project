@@ -1,6 +1,6 @@
 ﻿using BarrelHide.Game.Camera.Options;
+using BarrelHide.Game.Characters.Configuration.Options;
 using BarrelHide.Game.Consts;
-using BarrelHide.Game.Players.Configuration.Options;
 using UnityEngine;
 
 namespace BarrelHide.Game.Configuration.Options
