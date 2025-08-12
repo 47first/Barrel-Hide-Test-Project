@@ -30,12 +30,8 @@ namespace BarrelHide.Game.Characters.Components.Enemy
         {
             var relativePositionToWayPoint = _transformController.Position - TargetWayPoint.Position;
 
-            Debug.Log(relativePositionToWayPoint.magnitude);
-
             if (relativePositionToWayPoint.magnitude < _options.ChangeWayPointRange)
             {
-                Debug.Log("Change target player point");
-
                 var linkIndex = Random.Range(0, TargetWayPoint.Links.Length);
 
                 TargetWayPoint = TargetWayPoint.Links[linkIndex];

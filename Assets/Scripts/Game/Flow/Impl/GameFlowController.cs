@@ -1,6 +1,7 @@
 ﻿using BarrelHide.Game.Flow.Enums;
 using BarrelHide.Game.Flow.Exceptions;
 using R3;
+using UnityEngine;
 
 namespace BarrelHide.Game.Flow.Impl
 {
@@ -20,6 +21,7 @@ namespace BarrelHide.Game.Flow.Impl
             }
 
             _flow.Value = value;
+            Debug.Log($"Flow changed to {_flow.Value}");
         }
     }
 }

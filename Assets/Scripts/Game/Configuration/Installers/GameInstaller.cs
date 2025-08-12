@@ -1,7 +1,10 @@
 using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Configuration.Options;
 using BarrelHide.Game.Consts;
+using BarrelHide.Game.Flow.Components;
+using BarrelHide.Game.Flow.Impl;
 using BarrelHide.Game.Input;
+using BarrelHide.Game.Observers;
 using BarrelHide.Generated.InputActions;
 using UnityEngine;
 using Zenject;
@@ -31,11 +34,27 @@ namespace BarrelHide.Game.Configuration.Installers
                 .AsSingle();
 
             Container
+                .BindInterfacesTo<GameFlowController>()
+                .AsSingle();
+
+            Container
                 .BindInterfacesAndSelfTo<GameInputActions>()
                 .AsSingle();
 
             Container
                 .BindInterfacesTo<GameInputActionsHandle>()
+                .AsSingle()
+                .NonLazy();
+
+            // Triggers
+            Container
+                .Bind<FinishTrigger>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            // Observers
+            Container
+                .BindInterfacesTo<FinishTriggerObserver>()
                 .AsSingle()
                 .NonLazy();
         }
