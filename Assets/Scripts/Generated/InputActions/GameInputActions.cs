@@ -34,7 +34,7 @@ namespace BarrelHide.Generated.InputActions
                     ""type"": ""Value"",
                     ""id"": ""6a08d41c-746b-4b60-95fe-85f631b85be6"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2,StickDeadzone"",
+                    ""processors"": ""StickDeadzone"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
