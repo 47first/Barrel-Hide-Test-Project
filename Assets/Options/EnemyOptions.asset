@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DetectionRange>k__BackingField: 3
   <ChangeWayPointRange>k__BackingField: 0.5
-  <MoveSpeed>k__BackingField: 1.5
+  <MoveSpeed>k__BackingField: 0.75
   <MovementMagnitudeError>k__BackingField: 0
