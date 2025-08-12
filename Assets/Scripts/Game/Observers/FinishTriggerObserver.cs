@@ -30,10 +30,8 @@ namespace BarrelHide.Game.Observers
         public void Initialize()
         {
             _observer = _finishTrigger.TriggerEntered
-                .Where(_player, (collider, player) =>
-                    collider.gameObject == player.ColliderObject)
-                .Where(_gameFlowController, (_, gameFlowController) =>
-                    gameFlowController.Flow.CurrentValue is GameFlow.Pending)
+                .Where(_player, ColliderIsPlayer)
+                .Where(_gameFlowController, GameFlowIsPlaying)
                 .Subscribe(FinishTrigger_PlayerEntered);
         }
 
@@ -45,6 +43,16 @@ namespace BarrelHide.Game.Observers
         private void FinishTrigger_PlayerEntered(Collider collider)
         {
             _gameFlowController.SetFlow(GameFlow.Won);
+        }
+
+        private static bool ColliderIsPlayer(Collider collider, IPlayerFacade player)
+        {
+            return collider.gameObject == player.ColliderObject;
+        }
+
+        private static bool GameFlowIsPlaying(Collider collider, IGameFlowController gameFlowController)
+        {
+            return gameFlowController.Flow.CurrentValue is GameFlow.Playing;
         }
     }
 }

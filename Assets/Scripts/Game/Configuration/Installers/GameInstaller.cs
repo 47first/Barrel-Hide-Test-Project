@@ -18,6 +18,7 @@ namespace BarrelHide.Game.Configuration.Installers
 
         [Header(HeaderConst.References)]
         [SerializeField] private GameObjectContext _player;
+        [SerializeField] private GameObjectContext[] _enemies;
 
         public override void InstallBindings()
         {
@@ -32,6 +33,17 @@ namespace BarrelHide.Game.Configuration.Installers
                 .FromSubContainerResolve()
                 .ByInstance(_player.Container)
                 .AsSingle();
+
+            foreach (var enemy in _enemies)
+            {
+                enemy.Install(Container);
+
+                Container
+                    .Bind<IEnemyFacade>()
+                    .FromSubContainerResolve()
+                    .ByInstance(enemy.Container)
+                    .AsSingle();
+            }
 
             Container
                 .BindInterfacesTo<GameFlowController>()
@@ -55,6 +67,10 @@ namespace BarrelHide.Game.Configuration.Installers
             // Observers
             Container
                 .BindInterfacesTo<FinishTriggerObserver>()
+                .AsSingle()
+                .NonLazy();
+            Container
+                .BindInterfacesTo<PlayerDetectionObserver>()
                 .AsSingle()
                 .NonLazy();
         }

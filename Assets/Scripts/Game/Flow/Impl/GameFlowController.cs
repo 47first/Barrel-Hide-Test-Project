@@ -7,7 +7,7 @@ namespace BarrelHide.Game.Flow.Impl
 {
     public class GameFlowController : IGameFlowController
     {
-        private readonly ReactiveProperty<GameFlow> _flow = new(GameFlow.Pending);
+        private readonly ReactiveProperty<GameFlow> _flow = new(GameFlow.Playing);
 
         public ReadOnlyReactiveProperty<GameFlow> Flow => _flow;
 
