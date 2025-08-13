@@ -4,6 +4,7 @@ using BarrelHide.Game.Characters.Configuration.Options;
 using BarrelHide.Game.Characters.Facade.Impl;
 using BarrelHide.Game.Characters.Input.Actualizers;
 using BarrelHide.Game.Characters.Input.Models;
+using BarrelHide.Game.Consts;
 using BarrelHide.Game.Views;
 using UnityEngine;
 using Zenject;
@@ -12,6 +13,7 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
 {
     public class PlayerInstaller : MonoInstaller
     {
+        [Header(HeaderConst.References)]
         [SerializeField] private PlayerOptions _options;
         [SerializeField] private PlayerView _view;
         [SerializeField] private GameObject _presenter;

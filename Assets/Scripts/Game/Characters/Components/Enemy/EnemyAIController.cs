@@ -10,14 +10,14 @@ namespace BarrelHide.Game.Characters.Components.Enemy
 {
     public class EnemyAIController : MonoBehaviour
     {
-        private readonly Subject<IPlayerFacade> _playerSpottedSubject = new();
+        [Header(HeaderConst.References)]
+        [field: SerializeField] public WayPoint TargetWayPoint { get; set; }
 
         [Inject] private IPlayerFacade _player;
         [Inject] private EnemyOptions _options;
         [Inject] private CharacterTransformController _transformController;
 
-        [Header(HeaderConst.References)]
-        [field: SerializeField] public WayPoint TargetWayPoint { get; set; }
+        private readonly Subject<IPlayerFacade> _playerSpottedSubject = new();
 
         public Observable<IPlayerFacade> PlayerSpottedEvent => _playerSpottedSubject;
 

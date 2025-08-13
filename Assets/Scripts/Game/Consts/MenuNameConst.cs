@@ -12,5 +12,7 @@
         public const string PlayerOptions = "ScriptableObjects/Game/" + nameof(PlayerOptions);
 
         public const string EnemyOptions = "ScriptableObjects/Game/" + nameof(EnemyOptions);
+
+        public const string GameFlowOptions = "ScriptableObjects/Game/" + nameof(GameFlowOptions);
     }
 }

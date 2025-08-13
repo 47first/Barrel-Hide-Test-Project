@@ -24,6 +24,7 @@ namespace BarrelHide.Game.Configuration.Installers
         {
             // Options
             Container.BindInstance(_options.CameraOptions);
+            Container.BindInstance(_options.GameFlowOptions);
 
             // Player Facade
             _playerContext.Install(Container);
@@ -77,7 +78,11 @@ namespace BarrelHide.Game.Configuration.Installers
                 .AsSingle()
                 .NonLazy();
             Container
-                .BindInterfacesTo<ChangeGameFlowToPlayingTrigger>()
+                .BindInterfacesTo<StartGameOnInputTrigger>()
+                .AsSingle()
+                .NonLazy();
+            Container
+                .BindInterfacesTo<LoseOnTimeUpTrigger>()
                 .AsSingle()
                 .NonLazy();
         }

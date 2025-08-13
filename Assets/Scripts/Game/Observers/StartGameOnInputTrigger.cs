@@ -7,12 +7,12 @@ using Zenject;
 
 namespace BarrelHide.Game.Observers
 {
-    public class ChangeGameFlowToPlayingTrigger : IInitializable, IDisposable
+    public class StartGameOnInputTrigger : IInitializable, IDisposable
     {
         private readonly GameInputActions _inputActions;
         private readonly IGameFlowController _gameFlowController;
 
-        public ChangeGameFlowToPlayingTrigger(
+        public StartGameOnInputTrigger(
             GameInputActions inputActions,
             IGameFlowController gameFlowController)
         {
