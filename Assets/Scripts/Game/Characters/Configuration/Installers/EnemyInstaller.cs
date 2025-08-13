@@ -15,10 +15,12 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
 
         public override void InstallBindings()
         {
+            // Facade
             Container
                 .BindInterfacesTo<EnemyFacade>()
                 .AsSingle();
 
+            // Options
             Container
                 .BindInterfacesAndSelfTo<EnemyOptions>()
                 .FromInstance(_options);

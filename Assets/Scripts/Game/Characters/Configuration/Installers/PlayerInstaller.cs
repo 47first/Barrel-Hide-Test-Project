@@ -14,17 +14,21 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
     {
         [SerializeField] private PlayerOptions _options;
         [SerializeField] private PlayerView _view;
+        [SerializeField] private GameObject _presenter;
 
         public override void InstallBindings()
         {
+            // Facade
             Container
                 .BindInterfacesTo<PlayerFacade>()
                 .AsSingle();
 
+            // Options
             Container
                 .BindInterfacesAndSelfTo<PlayerOptions>()
                 .FromInstance(_options);
 
+            // View
             Container.BindInstance(_view);
 
             // Input
@@ -38,22 +42,22 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
             // Controllers
             Container
                 .Bind<CharacterController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<CharacterTransformController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<PlayerVisibilityController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<PlayerViewController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
         }

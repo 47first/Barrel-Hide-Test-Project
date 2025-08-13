@@ -17,8 +17,8 @@ namespace BarrelHide.Game.Configuration.Installers
         [SerializeField] private GameOptions _options;
 
         [Header(HeaderConst.References)]
-        [SerializeField] private GameObjectContext _player;
-        [SerializeField] private GameObjectContext[] _enemies;
+        [SerializeField] private GameObjectContext _playerContext;
+        [SerializeField] private GameObjectContext[] _enemyContexts;
 
         public override void InstallBindings()
         {
@@ -26,29 +26,33 @@ namespace BarrelHide.Game.Configuration.Installers
             Container.BindInstance(_options.PlayerOptions);
             Container.BindInstance(_options.CameraOptions);
 
-            _player.Install(Container);
+            // Player Facade
+            _playerContext.Install(Container);
 
             Container
                 .Bind<IPlayerFacade>()
                 .FromSubContainerResolve()
-                .ByInstance(_player.Container)
+                .ByInstance(_playerContext.Container)
                 .AsSingle();
 
-            foreach (var enemy in _enemies)
+            // Enemy Facades
+            foreach (var enemyContext in _enemyContexts)
             {
-                enemy.Install(Container);
+                enemyContext.Install(Container);
 
                 Container
                     .Bind<IEnemyFacade>()
                     .FromSubContainerResolve()
-                    .ByInstance(enemy.Container)
+                    .ByInstance(enemyContext.Container)
                     .AsCached();
             }
 
+            // Game Flow
             Container
                 .BindInterfacesTo<GameFlowController>()
                 .AsSingle();
 
+            // Input
             Container
                 .BindInterfacesAndSelfTo<GameInputActions>()
                 .AsSingle();

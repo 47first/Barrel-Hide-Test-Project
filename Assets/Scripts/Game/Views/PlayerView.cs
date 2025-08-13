@@ -6,7 +6,6 @@ namespace BarrelHide.Game.Views
 {
     public class PlayerView : MonoBehaviour
     {
-
         [Header(HeaderConst.References)]
         [SerializeField] private Transform _rootTransform;
         [SerializeField] private Animator _playerAnimator;
@@ -26,7 +25,7 @@ namespace BarrelHide.Game.Views
         {
             _playerAnimator.SetInteger(AnimatorHashConst.State, (int)state);
 
-            if (state is PlayerViewState.Won or PlayerViewState.Lose)
+            if (state is PlayerViewState.Lose)
             {
                 _barrelAnimator.SetBool(AnimatorHashConst.Destroyed, true);
             }
