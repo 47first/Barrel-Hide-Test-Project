@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69991e6840545b786f1370060f8df9c, type: 3}
   m_Name: CameraOptions
   m_EditorClassIdentifier: 
-  <PositionOffset>k__BackingField: {x: 0, y: 2.5, z: -5}
+  <PositionOffset>k__BackingField: {x: 0, y: 3.5, z: -5}

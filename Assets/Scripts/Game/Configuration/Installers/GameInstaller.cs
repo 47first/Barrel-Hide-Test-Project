@@ -42,7 +42,7 @@ namespace BarrelHide.Game.Configuration.Installers
                     .Bind<IEnemyFacade>()
                     .FromSubContainerResolve()
                     .ByInstance(enemy.Container)
-                    .AsSingle();
+                    .AsCached();
             }
 
             Container

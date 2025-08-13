@@ -2,7 +2,9 @@
 {
     public enum PlayerViewState
     {
-        Idle,
-        Moving
+        Idle = 0,
+        Moving = 1,
+        Lose = 2,
+        Won = 3
     }
 }
