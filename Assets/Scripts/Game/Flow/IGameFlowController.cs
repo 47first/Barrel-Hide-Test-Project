@@ -7,6 +7,8 @@ namespace BarrelHide.Game.Flow
     {
         public ReadOnlyReactiveProperty<GameFlow> Flow { get; }
 
+        public float? EndTime { get; }
+
         public void SetFlow(GameFlow value);
     }
 }

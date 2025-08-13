@@ -1,8 +1,8 @@
 ﻿using System;
 using BarrelHide.Game.Flow;
 using BarrelHide.Game.Flow.Enums;
-using BarrelHide.Game.Flow.Options;
 using R3;
+using UnityEngine;
 using Zenject;
 
 namespace BarrelHide.Game.Observers
@@ -10,17 +10,13 @@ namespace BarrelHide.Game.Observers
     public class LoseOnTimeUpTrigger : IInitializable, IDisposable
     {
         private readonly IGameFlowController _gameFlowController;
-        private readonly GameFlowOptions _options;
 
         private IDisposable _gameFlowControllerObserver;
         private IDisposable _timerObserver;
 
-        public LoseOnTimeUpTrigger(
-            IGameFlowController gameFlowController,
-            GameFlowOptions options)
+        public LoseOnTimeUpTrigger(IGameFlowController gameFlowController)
         {
             _gameFlowController = gameFlowController;
-            _options = options;
         }
 
         public void Initialize()
@@ -33,8 +29,13 @@ namespace BarrelHide.Game.Observers
         {
             if (gameFlow is GameFlow.Playing && _timerObserver is null)
             {
+                if (_gameFlowController.EndTime.HasValue == false)
+                {
+                    throw new InvalidOperationException($"End time must be set on '{GameFlow.Playing}' flow");
+                }
+
                 _timerObserver = Observable
-                    .Timer(TimeSpan.FromSeconds(_options.TimeToLose))
+                    .Timer(TimeSpan.FromSeconds(_gameFlowController.EndTime.Value - Time.time))
                     .Subscribe(LoseTimer_Triggered);
 
                 return;
