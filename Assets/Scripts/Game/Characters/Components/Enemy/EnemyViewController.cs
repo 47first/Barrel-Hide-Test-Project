@@ -36,7 +36,8 @@ namespace BarrelHide.Game.Characters.Components.Enemy
 
         private void FixedUpdate()
         {
-            if (_transformController.FixedDeltaPosition != Vector3.zero)
+            if (_transformController.FixedDeltaPosition != Vector3.zero &&
+                _state is not EnemyViewState.Shooting)
             {
                 _targetRotation = Quaternion.LookRotation(_transformController.FixedDeltaPosition);
             }
@@ -79,7 +80,7 @@ namespace BarrelHide.Game.Characters.Components.Enemy
 
         private void AIController_PlayerSpotted(IPlayerFacade playerFacade)
         {
-            _targetRotation = Quaternion.LookRotation(_transformController.Position - playerFacade.Position);
+            _targetRotation = Quaternion.LookRotation(playerFacade.Position - _transformController.Position);
 
             SetState(EnemyViewState.Shooting);
         }

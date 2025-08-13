@@ -4,7 +4,6 @@ using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Flow;
 using BarrelHide.Game.Flow.Enums;
 using R3;
-using UnityEngine;
 using Zenject;
 
 namespace BarrelHide.Game.Observers
@@ -28,16 +27,12 @@ namespace BarrelHide.Game.Observers
         {
             var disposables = Disposable.CreateBuilder();
 
-            Debug.Log("Initialize");
-
             foreach (var enemy in _enemies)
             {
                 enemy.PlayerSpotted
                     .Where(_gameFlowController, GameFlowInPlaying)
                     .Subscribe(Enemy_PlayerSpotted)
                     .AddTo(ref disposables);
-
-                Debug.Log("Enemy");
             }
 
             _observers = disposables.Build();

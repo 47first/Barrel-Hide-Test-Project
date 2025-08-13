@@ -107,34 +107,6 @@ namespace BarrelHide.Generated.InputActions
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Navigation"",
-            ""id"": ""c7ee0eca-b7bc-4739-b698-ba0adb41c680"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""1d9b6060-8b8a-4d55-bb2e-bec42ce1f38f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""7c9529bc-96aa-4201-b77c-d292d448127f"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -142,15 +114,11 @@ namespace BarrelHide.Generated.InputActions
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-            // Navigation
-            m_Navigation = asset.FindActionMap("Navigation", throwIfNotFound: true);
-            m_Navigation_Newaction = m_Navigation.FindAction("New action", throwIfNotFound: true);
         }
 
         ~@GameInputActions()
         {
             UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInputActions.Player.Disable() has not been called.");
-            UnityEngine.Debug.Assert(!m_Navigation.enabled, "This will cause a leak and performance issues, GameInputActions.Navigation.Disable() has not been called.");
         }
 
         public void Dispose()
@@ -254,59 +222,9 @@ namespace BarrelHide.Generated.InputActions
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
-
-        // Navigation
-        private readonly InputActionMap m_Navigation;
-        private List<INavigationActions> m_NavigationActionsCallbackInterfaces = new List<INavigationActions>();
-        private readonly InputAction m_Navigation_Newaction;
-        public struct NavigationActions
-        {
-            private @GameInputActions m_Wrapper;
-            public NavigationActions(@GameInputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Newaction => m_Wrapper.m_Navigation_Newaction;
-            public InputActionMap Get() { return m_Wrapper.m_Navigation; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(NavigationActions set) { return set.Get(); }
-            public void AddCallbacks(INavigationActions instance)
-            {
-                if (instance == null || m_Wrapper.m_NavigationActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_NavigationActionsCallbackInterfaces.Add(instance);
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-
-            private void UnregisterCallbacks(INavigationActions instance)
-            {
-                @Newaction.started -= instance.OnNewaction;
-                @Newaction.performed -= instance.OnNewaction;
-                @Newaction.canceled -= instance.OnNewaction;
-            }
-
-            public void RemoveCallbacks(INavigationActions instance)
-            {
-                if (m_Wrapper.m_NavigationActionsCallbackInterfaces.Remove(instance))
-                    UnregisterCallbacks(instance);
-            }
-
-            public void SetCallbacks(INavigationActions instance)
-            {
-                foreach (var item in m_Wrapper.m_NavigationActionsCallbackInterfaces)
-                    UnregisterCallbacks(item);
-                m_Wrapper.m_NavigationActionsCallbackInterfaces.Clear();
-                AddCallbacks(instance);
-            }
-        }
-        public NavigationActions @Navigation => new NavigationActions(this);
         public interface IPlayerActions
         {
             void OnMovement(InputAction.CallbackContext context);
-        }
-        public interface INavigationActions
-        {
-            void OnNewaction(InputAction.CallbackContext context);
         }
     }
 }

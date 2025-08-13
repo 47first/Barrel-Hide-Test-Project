@@ -23,7 +23,6 @@ namespace BarrelHide.Game.Configuration.Installers
         public override void InstallBindings()
         {
             // Options
-            Container.BindInstance(_options.PlayerOptions);
             Container.BindInstance(_options.CameraOptions);
 
             // Player Facade
@@ -75,6 +74,10 @@ namespace BarrelHide.Game.Configuration.Installers
                 .NonLazy();
             Container
                 .BindInterfacesTo<PlayerDetectionObserver>()
+                .AsSingle()
+                .NonLazy();
+            Container
+                .BindInterfacesTo<ChangeGameFlowToPlayingTrigger>()
                 .AsSingle()
                 .NonLazy();
         }
