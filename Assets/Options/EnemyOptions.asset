@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3f69a06e824dd8b05d469c470ae02d, type: 3}
   m_Name: EnemyOptions
   m_EditorClassIdentifier: 
-  <DetectionRange>k__BackingField: 3
+  <DetectionRadius>k__BackingField: 2
   <ChangeWayPointRange>k__BackingField: 0.5
   <MoveSpeed>k__BackingField: 0.75
   <MovementMagnitudeError>k__BackingField: 0
+  <RotationLerpSpeed>k__BackingField: 0.1
+  <RotationDeltaPositionMagnitudeError>k__BackingField: 0

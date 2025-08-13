@@ -8,7 +8,7 @@ namespace BarrelHide.Game.Characters.Components
     public class CharacterTransformController : MonoBehaviour
     {
         [Inject] private CharacterController _characterController;
-        [Inject] private PlayerOptions _options;
+        [Inject] private ICharacterOptions _options;
         [Inject] private ICharacterInput _input;
 
         private Vector3 _previousFixedPosition;

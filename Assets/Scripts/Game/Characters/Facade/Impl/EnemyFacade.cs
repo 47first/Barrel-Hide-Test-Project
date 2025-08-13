@@ -12,6 +12,6 @@ namespace BarrelHide.Game.Characters.Facade.Impl
             _aiController = aiController;
         }
 
-        public Observable<IPlayerFacade> PlayerSpotted => _aiController.PlayerSpotted;
+        public Observable<IPlayerFacade> PlayerSpotted => _aiController.PlayerSpottedEvent;
     }
 }

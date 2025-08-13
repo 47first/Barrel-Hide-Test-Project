@@ -3,8 +3,7 @@
     public enum EnemyViewState
     {
         Idle,
-        Walking,
-        Noticing,
+        Move,
         Shooting
     }
 }

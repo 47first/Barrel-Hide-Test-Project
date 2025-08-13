@@ -34,13 +34,13 @@ namespace BarrelHide.Game.Characters.Components.Player
             _view.SetRotation(_currentRotation);
             _view.SetPosition(_transformController.Position);
 
-            if (TrySetNewViewState())
+            if (TryDefineNewViewState())
             {
                 _view.SetState(_state);
             }
         }
 
-        private bool TrySetNewViewState()
+        private bool TryDefineNewViewState()
         {
             var newState = _gameFlowController.Flow.CurrentValue switch
             {

@@ -9,7 +9,7 @@ namespace BarrelHide.Game.Characters.Configuration.Options
     public class EnemyOptions : ScriptableObject, ICharacterOptions
     {
         [field: Header(HeaderConst.Options)]
-        [field: SerializeField] public float DetectionRange { get; private set; }
+        [field: SerializeField] public float DetectionRadius { get; private set; }
 
         [field: SerializeField] public float ChangeWayPointRange { get; private set; }
 
@@ -17,5 +17,10 @@ namespace BarrelHide.Game.Characters.Configuration.Options
         [field: SerializeField] public float MoveSpeed { get; private set; }
 
         [field: SerializeField] public float MovementMagnitudeError { get; private set; }
+
+        [field: Header(HeaderConst.View)]
+        [field: SerializeField] public float RotationLerpSpeed { get; private set; }
+
+        [field: SerializeField] public float RotationDeltaPositionMagnitudeError { get; private set; }
     }
 }

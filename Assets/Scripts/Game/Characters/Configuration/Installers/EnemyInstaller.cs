@@ -4,6 +4,7 @@ using BarrelHide.Game.Characters.Configuration.Options;
 using BarrelHide.Game.Characters.Facade.Impl;
 using BarrelHide.Game.Characters.Input.Actualizers;
 using BarrelHide.Game.Characters.Input.Models;
+using BarrelHide.Game.Views;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,8 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
     public class EnemyInstaller : MonoInstaller
     {
         [SerializeField] private EnemyOptions _options;
+        [SerializeField] private EnemyView _view;
+        [SerializeField] private GameObject _presenter;
 
         public override void InstallBindings()
         {
@@ -25,6 +28,9 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
                 .BindInterfacesAndSelfTo<EnemyOptions>()
                 .FromInstance(_options);
 
+            // View
+            Container.BindInstance(_view);
+
             // Input
             Container
                 .BindInterfacesAndSelfTo<EnemyInput>()
@@ -36,17 +42,17 @@ namespace BarrelHide.Game.Characters.Configuration.Installers
             // Controllers
             Container
                 .Bind<CharacterController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<CharacterTransformController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
             Container
                 .Bind<EnemyAIController>()
-                .FromComponentOnRoot()
+                .FromComponentOn(_presenter)
                 .AsSingle()
                 .NonLazy();
         }
