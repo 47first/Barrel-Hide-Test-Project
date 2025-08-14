@@ -20,7 +20,7 @@ namespace BarrelHide.Game.Input
 
         public void Dispose()
         {
-            _gameInputActions.Dispose();
+            _gameInputActions.Disable();
         }
     }
 }

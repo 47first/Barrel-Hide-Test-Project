@@ -11,7 +11,9 @@ namespace BarrelHide.Game.Flow.Impl
         private readonly GameFlowOptions _options;
 
         private readonly ReactiveProperty<GameFlow> _flow = new(GameFlow.Pending);
+        private float? _timeToLose;
         private float? _endTime;
+        private float? _playingTime;
 
         public GameFlowController(GameFlowOptions options)
         {
@@ -20,7 +22,11 @@ namespace BarrelHide.Game.Flow.Impl
 
         public ReadOnlyReactiveProperty<GameFlow> Flow => _flow;
 
+        public float? TimeToLose => _timeToLose;
+
         public float? EndTime => _endTime;
+
+        public float? PlayingTime => _playingTime;
 
         public void SetFlow(GameFlow value)
         {
@@ -31,12 +37,18 @@ namespace BarrelHide.Game.Flow.Impl
                 throw new InvalidFlowTransitionException(_flow.Value, value);
             }
 
+            _playingTime = value is GameFlow.Won or GameFlow.Lose && _endTime.HasValue
+                ? Mathf.Max(_endTime.Value - Time.time, 0)
+                : null;
+
             if (value is GameFlow.Playing)
             {
-                _endTime = Time.time + _options.TimeToLose;
+                _timeToLose = _options.TimeToLose;
+                _endTime = Time.time + _timeToLose;
             }
             else
             {
+                _timeToLose = null;
                 _endTime = null;
             }
 

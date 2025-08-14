@@ -16,7 +16,7 @@ namespace BarrelHide.Game.Views
         [SerializeField] private Button _restartButton;
         [SerializeField] private Slider _timerSlider;
 
-        public void SetResetButtonClickCallback(UnityAction callback)
+        public void AddResetButtonClickCallback(UnityAction callback)
         {
             _restartButton.onClick.AddListener(callback);
         }
@@ -26,25 +26,18 @@ namespace BarrelHide.Game.Views
             _restartButton.onClick.RemoveListener(callback);
         }
 
-        public void SetBestTime(float value)
+        public void SetTopBarText(string text)
         {
-            _topBarLabel.text = $"{value} s.";
+            _topBarLabel.text = text;
         }
 
-        public void SetTime(float value)
+        public void SetTimeSliderValue(float value)
         {
             _timerSlider.value = value;
         }
 
         public void SetState(GameFlowViewState state)
         {
-            _topBarLabel.text = state switch
-            {
-                GameFlowViewState.Won => "Won",
-                GameFlowViewState.Lose => "Lose",
-                _ => string.Empty
-            };
-
             _animator.SetInteger(AnimatorHashConst.State, (int)state);
         }
     }

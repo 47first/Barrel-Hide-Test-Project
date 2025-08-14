@@ -5,6 +5,9 @@ using BarrelHide.Game.Flow.Components;
 using BarrelHide.Game.Flow.Impl;
 using BarrelHide.Game.Input;
 using BarrelHide.Game.Observers;
+using BarrelHide.Game.Presenters;
+using BarrelHide.Game.Record.Impl;
+using BarrelHide.Game.Views;
 using BarrelHide.Generated.InputActions;
 using UnityEngine;
 using Zenject;
@@ -47,26 +50,42 @@ namespace BarrelHide.Game.Configuration.Installers
                     .AsCached();
             }
 
-            // Game Flow
+            // Services
             Container
                 .BindInterfacesTo<GameFlowController>()
+                .AsSingle();
+            Container
+                .BindInterfacesTo<RecordController>()
                 .AsSingle();
 
             // Input
             Container
                 .BindInterfacesAndSelfTo<GameInputActions>()
                 .AsSingle();
-
             Container
                 .BindInterfacesTo<GameInputActionsHandle>()
                 .AsSingle()
                 .NonLazy();
 
-            // Triggers
+            // Physical Triggers
             Container
                 .Bind<FinishTrigger>()
                 .FromComponentInHierarchy()
                 .AsSingle();
+
+            // Views
+            Container
+                .Bind<GameFlowView>()
+                .ToSelf()
+                .FromComponentsInHierarchy()
+                .AsSingle()
+                .WhenInjectedInto<GameFlowPresenter>();
+
+            // Presenters
+            Container
+                .BindInterfacesTo<GameFlowPresenter>()
+                .AsSingle()
+                .NonLazy();
 
             // Observers
             Container
@@ -83,6 +102,10 @@ namespace BarrelHide.Game.Configuration.Installers
                 .NonLazy();
             Container
                 .BindInterfacesTo<LoseOnTimeUpTrigger>()
+                .AsSingle()
+                .NonLazy();
+            Container
+                .BindInterfacesTo<UpdateRecordTrigger>()
                 .AsSingle()
                 .NonLazy();
         }
