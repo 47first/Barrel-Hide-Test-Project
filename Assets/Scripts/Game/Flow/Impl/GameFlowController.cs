@@ -38,7 +38,7 @@ namespace BarrelHide.Game.Flow.Impl
             }
 
             _playingTime = value is GameFlow.Won or GameFlow.Lose && _endTime.HasValue
-                ? Mathf.Max(_endTime.Value - Time.time, 0)
+                ? Mathf.Max(_options.TimeToLose - (_endTime.Value - Time.time), 0)
                 : null;
 
             if (value is GameFlow.Playing)
