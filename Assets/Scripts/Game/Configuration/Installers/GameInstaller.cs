@@ -1,9 +1,9 @@
 using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Configuration.Options;
 using BarrelHide.Game.Consts;
-using BarrelHide.Game.Flow.Components;
 using BarrelHide.Game.Flow.Impl;
 using BarrelHide.Game.Input;
+using BarrelHide.Game.Map;
 using BarrelHide.Game.Observers;
 using BarrelHide.Game.Presenters;
 using BarrelHide.Game.Record.Impl;

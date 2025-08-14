@@ -9,9 +9,9 @@ namespace BarrelHide.Game.Characters.Components.Player
         [Inject] private CharacterTransformController _transformController;
         [Inject] private PlayerOptions _options;
 
-        public bool IsVisible { get; private set; }
-
         private float _previousVisibleTime;
+
+        public bool IsVisible { get; private set; }
 
         private void FixedUpdate()
         {

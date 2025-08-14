@@ -1,8 +1,8 @@
 ﻿using System;
 using BarrelHide.Game.Characters.Facade;
 using BarrelHide.Game.Flow;
-using BarrelHide.Game.Flow.Components;
 using BarrelHide.Game.Flow.Enums;
+using BarrelHide.Game.Map;
 using R3;
 using UnityEngine;
 using Zenject;

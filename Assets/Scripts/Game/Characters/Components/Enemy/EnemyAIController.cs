@@ -11,7 +11,7 @@ namespace BarrelHide.Game.Characters.Components.Enemy
     public class EnemyAIController : MonoBehaviour
     {
         [Header(HeaderConst.References)]
-        [field: SerializeField] public WayPoint TargetWayPoint { get; set; }
+        [field: SerializeField] public WayPoint TargetWayPoint { get; private set; }
 
         [Inject] private IPlayerFacade _player;
         [Inject] private EnemyOptions _options;

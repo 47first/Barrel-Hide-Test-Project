@@ -3,7 +3,7 @@
     /// <summary>
     /// Constrains to manage all menu names (path patterns).
     /// </summary>
-    public class MenuNameConst
+    public static class MenuNameConst
     {
         public const string GameOptions = "ScriptableObjects/Game/" + nameof(GameOptions);
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using BarrelHide.Game.Flow;
 using BarrelHide.Game.Flow.Enums;
-using BarrelHide.Game.Flow.Options;
 using BarrelHide.Game.Record;
 using BarrelHide.Game.Views;
 using BarrelHide.Game.Views.Enums;

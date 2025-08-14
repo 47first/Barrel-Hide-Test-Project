@@ -1,7 +1,7 @@
 ﻿using R3;
 using UnityEngine;
 
-namespace BarrelHide.Game.Flow.Components
+namespace BarrelHide.Game.Map
 {
     public class FinishTrigger : MonoBehaviour
     {

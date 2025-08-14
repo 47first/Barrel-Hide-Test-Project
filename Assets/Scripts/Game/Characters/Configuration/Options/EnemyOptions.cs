@@ -18,7 +18,5 @@ namespace BarrelHide.Game.Characters.Configuration.Options
 
         [field: Header(HeaderConst.View)]
         [field: SerializeField] public float RotationLerpSpeed { get; private set; }
-
-        [field: SerializeField] public float RotationDeltaPositionMagnitudeError { get; private set; }
     }
 }
